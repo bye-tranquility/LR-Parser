@@ -1,0 +1,168 @@
+Пример 1: арифметические выражения со скобками
+Ввод:
+ET
++n()
+4
+E -> E+T
+E -> T
+T -> n
+T -> (E)
+E
+(n)
+((n))
+(n)+(n)+(n)
+n
+n)
+()
+exit
+Вывод:
+YES
+YES
+YES
+YES
+NO
+NO
+
+Пример 2: дополненная ПСП
+Ввод:
+S
+()*
+2
+S -> (S)S
+S -> *
+S
+(*)*
+((*)*)*
+*
+(*)*)
+exit
+Вывод:
+YES
+YES
+YES
+NO
+
+Пример 3: ПСП
+Ввод:
+S
+()
+2
+S ->
+S -> S(S)
+S
+()
+(())
+()()()()((((()()()(()))(())(()))(()))())
+())
+()()()()((((()()((()))(())(()))(()))())
+exit
+Вывод:
+YES
+YES
+YES
+NO
+NO
+
+Пример 4: shift-reduce конфликт
+Ввод:
+SA
+a
+3
+S ->
+S -> A
+A -> a
+S
+a
+exit
+Вывод:
+* LR(0):
+    CONFLICT in state 0 on `a`:
+    No way to decide whether to
+    - reduce by Rule 0
+    or
+    - shift to state 3
+    The grammar is not LR(0)
+* LR(1):
+    YES
+
+Пример 5: ПСП (shift-reduce конфликт)
+Ввод:
+S
+()
+2
+S ->
+S -> (S)S
+S
+()
+Вывод:
+* LR(0):
+    CONFLICT in state 0 on `(`:
+    No way to decide whether to
+    - reduce by Rule 0
+    or
+    - shift to state 1
+    The grammar is not LR(0)
+* LR(1):
+    YES
+
+Пример 6: reduce-reduce конфликт
+Ввод:
+SAB
+x
+4
+S -> A
+S -> B
+A -> x
+B -> x
+S
+x
+exit
+Вывод:
+* LR(0):
+    CONFLICT in state 4 on `$`:
+    No way to decide whether to
+    - reduce by Rule 2
+    or
+    - reduce by Rule 3
+    The grammar is not LR(0)
+* LR(1):
+    CONFLICT in state 4 on `$`:
+    No way to decide whether to
+    - reduce by Rule 2
+    or
+    - reduce by Rule 3
+    The grammar is not LR(1)
+
+Пример 7: язык из пустого слова
+Ввод:
+
+
+1
+S ->
+S
+
+a
+exit
+Вывод:
+YES
+NO
+
+Пример 8: {c^m d c^n d | n, m >= 0}
+Ввод:
+SC
+cd
+3
+S -> CC
+C -> cC
+C -> d
+S
+dd
+ccdcccccccdccccd
+cccdcccd
+ccccccdcccccd
+exit
+Вывод:
+YES
+NO
+YES
+YES
